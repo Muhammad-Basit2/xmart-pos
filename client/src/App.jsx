@@ -1,28 +1,10 @@
 import Button from "./components/common/Button";
+import Login from "./features/auth/components/pages/Login";
 
 function App() {
 
-    function handleClick(){
+  return <Login />;
 
-        alert("Welcome to Xmart POS");
-
-    }
-
-    return(
-
-        <div className="min-h-screen flex items-center justify-center">
-
-            <Button
-
-                title="Click Me"
-
-                onClick={handleClick}
-
-            />
-
-        </div>
-
-    );
 
 }
 
