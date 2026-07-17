@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../../../../components/common/Input";
 import Button from "../../../../components/common/Button";
-
+import { login } from "../../../../utils/auth";
 
 function Login() {
   // ===========================
@@ -12,6 +13,9 @@ function Login() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+
+
+  const navigate = useNavigate();
 
   // ===========================
   // Login Function
@@ -34,6 +38,8 @@ function Login() {
     console.log("Remember Me:", rememberMe);
 
     // Later we'll connect this with the backend
+    login();
+    navigate("/dashboard");
   }
 
   return (
