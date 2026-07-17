@@ -1,39 +1,18 @@
 function Button({
-
-    title,
-
-    onClick,
-
-    type = "button",
-
-    className = ""
-
+  title,
+  onClick,
+  type = "button",
+  className = "",
 }) {
-
-    return (
-        <button
-        type={type}
-
-        onClick={onClick}
-
-        className={`
-            px-4
-            py-2
-            rounded-lg
-            bg-blue-600
-            text-white
-            hover:bg-blue-700
-            transittion cursor-pointer
-
-            ${className}
-
-            `}
-
-        >
-            {title}
-
-        </button>
-    )
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      className={`w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition ${className}`}
+    >
+      {title}
+    </button>
+  );
 }
 
 export default Button;
