@@ -1,69 +1,43 @@
-import { NavLink } from "react-router-dom";
-import {
-  FaHome,
-  FaBoxOpen,
-  FaUsers,
-  FaShoppingCart,
-  FaCog,
-} from "react-icons/fa";
-
-const menuItems = [
-  {
-    name: "Dashboard",
-    path: "./dashboard",
-    icon: <FaHome />,
-  },
-  {
-    name: "Products",
-    path: "/products",
-    icon: <FaBoxOpen />,
-  },
-  {
-    name: "Customers",
-    path: "/customers",
-    icon: <FaUsers />,
-  },
-  {
-    name: "Sales",
-    path: "/sales",
-    icon: <FaShoppingCart />,
-  },
-  {
-    name: "Settings",
-    path: "/settings",
-    icon: <FaCog />,
-  },
-];
-
-function Sidebar() {
+function StatCard({
+  title,
+  value,
+  change,
+  icon,
+  bgColor,
+}) {
   return (
-    <div className="w-64 bg-slate-900 text-white min-h-screen p-5">
-      {/* Logo */}
-      <h1 className="text-2xl font-bold text-center mb-10">
-        POS System
-      </h1>
+    <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300">
 
-      {/* Navigation */}
-      <nav className="space-y-3">
-        {menuItems.map((item) => (
-          <NavLink
-            key={item.path}
-            to={item.path}
-            className={({ isActive }) =>
-              `flex items-center gap-3 p-3 rounded-lg transition-all ${
-                isActive
-                  ? "bg-blue-600"
-                  : "hover:bg-slate-800"
-              }`
-            }
-          >
-            <span className="text-lg">{item.icon}</span>
-            <span>{item.name}</span>
-          </NavLink>
-        ))}
-      </nav>
+      {/* Top Section */}
+
+      <div className="flex justify-between items-center">
+
+        <h3 className="text-gray-500 font-medium">
+          {title}
+        </h3>
+
+        <div
+          className={`w-12 h-12 rounded-full flex items-center justify-center text-white text-xl ${bgColor}`}
+        >
+          {icon}
+        </div>
+
+      </div>
+
+      {/* Value */}
+
+      <h2 className="text-3xl font-bold mt-5">
+        {value}
+      </h2>
+
+      {/* Change */}
+
+      <p className="text-green-600 mt-3 text-sm">
+        {change}
+      </p>
+
     </div>
   );
 }
 
-export default Sidebar;
+export default StatCard;
