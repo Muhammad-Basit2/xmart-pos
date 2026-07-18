@@ -1,5 +1,6 @@
 import StatCard from "../../components/StatCard/StatCard";
 import RecentSales from "../../components/RecentSales/RecentSales";
+import LowStock from "../../components/LowStock/LockStock";
 
 import {
   FaMoneyBillWave,
@@ -10,6 +11,7 @@ import {
 } from "react-icons/fa";
 import SalesChart from "../../components/SalesChart/SalesChart";
 import QuickActions from "../../components/QuickActions/QuickActions";
+import Products from "../../components/Products/Products";
 
 function Dashboard() {
   return (
@@ -86,7 +88,11 @@ function Dashboard() {
       <QuickActions />
 
       <RecentSales />
-      
+
+      <LowStock />
+      <br />
+      <Products />
+
     </div>
   );
 }

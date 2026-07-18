@@ -69,3 +69,30 @@ export const recentSales = [
     date: "17-Jul-2026",
   },
 ];
+
+export const lowStockProducts = [
+  {
+    id: 1,
+    name: "Coca Cola 250ml",
+    category: "Beverages",
+    stock: 3,
+  },
+  {
+    id: 2,
+    name: "Lays Chips",
+    category: "Snacks",
+    stock: 8,
+  },
+  {
+    id: 3,
+    name: "Pepsi 500ml",
+    category: "Beverages",
+    stock: 5,
+  },
+  {
+    id: 4,
+    name: "Biscuits",
+    category: "Bakery",
+    stock: 2,
+  },
+];

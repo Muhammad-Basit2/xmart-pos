@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./features/auth/components/pages/Login";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import Products from "./pages/Products/Products";
+import Products from "./components/Products/Products";
 import Customers from "./pages/Customers/Customers";
 import Sales from "./pages/Sales/Sales";
 import Settings from "./pages/settings/Settings";
