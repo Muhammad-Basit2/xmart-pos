@@ -1,6 +1,6 @@
 import { FaPlus } from "react-icons/fa";
 
-function ProductHeader() {
+function ProductHeader({ onAddProduct }) {
   return (
     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
 
@@ -14,7 +14,9 @@ function ProductHeader() {
         </p>
       </div>
 
-      <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-lg flex items-center gap-2 transition">
+      <button
+      onClick={onAddProduct}
+      className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-lg flex items-center gap-2 transition">
 
         <FaPlus />
 

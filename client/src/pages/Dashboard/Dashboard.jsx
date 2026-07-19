@@ -83,12 +83,12 @@ function Dashboard() {
       </div>
 
       <SalesChart />
-
+      <br />
 
       <QuickActions />
-
+      <br />
       <RecentSales />
-
+      <br />
       <LowStock />
       <br />
       <Products />

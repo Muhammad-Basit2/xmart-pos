@@ -4,8 +4,10 @@ import ProductHeader from "../ProductHeader/productHeader";
 import SearchBar from "../SearchBar/SearchBar";
 import FilterBar from "../FillterBar/FilterBar";
 import ProductTable from "../ProductTable/ProductTable";
+import Modal from "../Modal/Modal";
+import ProductForm from "../ProductForm/ProductForm";
 
-import { products } from "../../data/profuctsData";
+import { products as initialProducts } from "../../data/productsData";
 
 function Products() {
   // Search State
@@ -14,14 +16,18 @@ function Products() {
   // Category State
   const [category, setCategory] = useState("All");
 
+  // Modal State
+  const [openModal, setOpenModal] = useState(false);
+
+  // Products State
+  const [products, setProducts] = useState(initialProducts);
+
   // Filter Products
   const filteredProducts = products.filter((product) => {
-    // Search Filter
     const matchesSearch = product.name
       .toLowerCase()
       .includes(search.toLowerCase());
 
-    // Category Filter
     const matchesCategory =
       category === "All" || product.category === category;
 
@@ -31,7 +37,7 @@ function Products() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <ProductHeader />
+      <ProductHeader onAddProduct={() => setOpenModal(true)} />
 
       {/* Search & Filter */}
       <div className="flex flex-col lg:flex-row gap-4">
@@ -60,6 +66,19 @@ function Products() {
 
       {/* Product Table */}
       <ProductTable products={filteredProducts} />
+
+      {/* Add Product Modal */}
+      <Modal
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+        title="Add New Product"
+      >
+        <ProductForm
+          products={products}
+          setProducts={setProducts}
+          closeModal={() => setOpenModal(false)}
+        />
+      </Modal>
     </div>
   );
 }
