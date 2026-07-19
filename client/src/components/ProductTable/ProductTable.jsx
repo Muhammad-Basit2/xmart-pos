@@ -82,7 +82,7 @@ function ProductTable({ products }) {
 
                     {/* Price */}
                     <td className="px-6 py-4 font-bold text-green-600">
-                      ₨ {product.price.toLocaleString()}
+                      ₨ {product.sellingPrice.toLocaleString()}
                     </td>
 
                     {/* Stock */}

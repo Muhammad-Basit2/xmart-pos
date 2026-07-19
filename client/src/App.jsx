@@ -6,6 +6,7 @@ import Products from "./components/Products/Products";
 import Customers from "./pages/Customers/Customers";
 import Sales from "./pages/Sales/Sales";
 import Settings from "./pages/settings/Settings";
+import POS from "./pages/POS/POS";
 
 import DashboardLayout from "./layouts/DashboardLayout/DashboardLayout";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/customers" element={<Customers />} />
         <Route path="/sales" element={<Sales />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/pos" element={<POS />}  />
       </Route>
 
       {/* Unknown URL */}
