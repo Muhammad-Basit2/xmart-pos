@@ -1,48 +1,89 @@
 import { FaShoppingCart } from "react-icons/fa";
 
 function ProductCard({ product, onAdd }) {
-  return (
-    <div className="bg-white rounded-2xl shadow hover:shadow-lg transition duration-300 p-4 flex flex-col">
+  const outOfStock = product.stock <= 0;
+  const lowStock = product.stock > 0 && product.stock <= 10;
 
+  return (
+    <div
+      className="bg-white rounded-2xl shadow hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col"
+    >
       {/* Product Image */}
-      <div className="h-32 rounded-xl bg-gray-100 flex items-center justify-center text-5xl">
+      <div className="h-28 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center text-5xl">
         {product.image || "📦"}
       </div>
 
-      {/* Product Name */}
-      <h2 className="mt-4 text-lg font-bold text-gray-800">
-        {product.name}
-      </h2>
+      {/* Body */}
+      <div className="p-4 flex flex-col flex-1">
 
-      {/* Category */}
-      <p className="text-sm text-gray-500">
-        {product.category}
-      </p>
+        {/* Name */}
+        <h2 className="font-bold text-lg text-gray-800 line-clamp-2">
+          {product.name}
+        </h2>
 
-      {/* Price */}
-      <div className="mt-3 flex justify-between items-center">
-        <span className="text-xl font-bold text-blue-600">
-          ₨ {product.sellingPrice}
-        </span>
+        {/* Category */}
+        <p className="text-sm text-gray-500 mt-1">
+          {product.category}
+        </p>
 
-        <span className="text-xs bg-gray-100 px-2 py-1 rounded-full">
-          {product.unit}
-        </span>
+        {/* Unit & Price */}
+        <div className="flex justify-between items-center mt-3">
+
+          <span className="text-blue-600 font-bold text-xl">
+            ₨ {product.sellingPrice}
+          </span>
+
+          <span className="bg-gray-100 px-3 py-1 rounded-full text-xs font-medium">
+            {product.unit}
+          </span>
+
+        </div>
+
+        {/* Stock */}
+
+        <div className="mt-3">
+
+          {outOfStock ? (
+            <span className="text-red-600 text-sm font-semibold">
+              ❌ Out of Stock
+            </span>
+          ) : lowStock ? (
+            <span className="text-orange-600 text-sm font-semibold">
+              ⚠ Low Stock ({product.stock})
+            </span>
+          ) : (
+            <span className="text-green-600 text-sm font-semibold">
+              ✔ Stock: {product.stock}
+            </span>
+          )}
+
+        </div>
+
+        {/* Spacer */}
+
+        <div className="flex-1"></div>
+
+        {/* Button */}
+
+        <button
+          disabled={outOfStock}
+          onClick={() => onAdd(product)}
+          className={`mt-4 py-3 rounded-xl flex items-center justify-center gap-2 font-semibold transition
+          ${
+            outOfStock
+              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700 text-white"
+          }`}
+        >
+          <FaShoppingCart />
+
+          {product.isWeightBased
+            ? "Add Weight"
+            : "Add to Cart"}
+
+        </button>
+
       </div>
-
-      {/* Stock */}
-      <p className="mt-2 text-sm text-gray-500">
-        Stock: {product.stock}
-      </p>
-
-      {/* Button */}
-      <button
-        onClick={() => onAdd(product)}
-        className="mt-4 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl flex items-center justify-center gap-2"
-      >
-        <FaShoppingCart />
-        Add to Cart
-      </button>
     </div>
   );
 }
